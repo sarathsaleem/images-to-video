@@ -6,3 +6,56 @@
   margin-top:10%;
   width:5%;
 }
+
+h1,h2,h3,h4,h5,body {
+    font-family: 'Exo 2', sans-serif;
+}
+
+body {
+    background: #000;
+    color: #fff;
+}
+
+header {
+    padding: 10px;
+    font-size: 12px;
+    background-color: rgb(255, 136, 0);
+}
+header h1 {
+    color: #000;
+    font-size: 19px;
+    text-align: center;
+}
+h1 {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.thumbnail {
+    padding: 0px;
+}
+
+.myButton {
+  background-color: #A65800;
+  -moz-border-radius: 28px;
+  -webkit-border-radius: 28px;
+  border-radius: 28px;
+  border: 1px solid #BE6C0E;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 17px;
+  padding: 10px 25px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #491C04;
+  box-shadow: 1px 1px 1px rgba(13, 13, 13, 0.59);
+}
+.myButton:hover {
+    background-color: #A65800;
+}
+
+.createVideo {
+  position: absolute;
+  top: 20px;
+  left: 38px;
+}

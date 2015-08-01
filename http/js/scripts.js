@@ -21,8 +21,6 @@ $(document).ready(function () {
 
 
 
-
-
   /* File Upload */
 
 
@@ -45,6 +43,25 @@ $(document).ready(function () {
         }).prop('disabled', !$.support.fileInput)
             .parent().addClass($.support.fileInput ? undefined : 'disabled');
 
+    intUI ();
 
 
 });
+
+
+function intUI () {
+
+    $(".createVideo").on('click', function () {
+        $('#pageView').fadeOut('slow');
+        $('#pageEdit').fadeIn('slow');
+        $(this).hide('slow');
+        $(".backToGallert").show('slow');
+    });
+
+     $(".backToGallert").on('click', function () {
+        $('#pageEdit').fadeOut('slow');
+        $('#pageView').fadeIn('slow');
+        $(this).hide('slow');
+        $(".createVideo").show('slow');
+    });
+}
