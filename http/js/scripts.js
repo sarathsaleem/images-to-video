@@ -21,47 +21,64 @@ $(document).ready(function () {
 
 
 
-  /* File Upload */
+    /* File Upload */
 
 
-  var url = 'api/upload/';
-        $('#fileupload').fileupload({
-            url: url,
-            dataType: 'json',
-            done: function (e, data) {
-                $.each(data.result.files, function (index, file) {
-                    $('<p/>').text(file.name).appendTo('#files');
-                });
-            },
-            progressall: function (e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('#progress .progress-bar').css(
-                    'width',
-                    progress + '%'
-                );
-            }
-        }).prop('disabled', !$.support.fileInput)
-            .parent().addClass($.support.fileInput ? undefined : 'disabled');
+    var url = 'api/upload/';
+    $('#fileupload').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files');
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
 
-    intUI ();
+    intUI();
 
 
 });
 
 
-function intUI () {
+function intUI() {
 
     $(".createVideo").on('click', function () {
-        $('#pageView').fadeOut('slow');
-        $('#pageEdit').fadeIn('slow');
+        $('#pageView').fadeOut('slow', function () {
+            $('#pageEdit').fadeIn();
+            $(".backToGallery").show();
+        });
         $(this).hide('slow');
-        $(".backToGallert").show('slow');
+
     });
 
-     $(".backToGallert").on('click', function () {
-        $('#pageEdit').fadeOut('slow');
-        $('#pageView').fadeIn('slow');
-        $(this).hide('slow');
-        $(".createVideo").show('slow');
+    $(".backToGallery").on('click', function () {
+        $('#pageEdit').fadeOut('slow', function () {
+            $('#pageView').fadeIn();
+            $(".createVideo").show();
+        });
+        $(this).hide();
     });
+
+
+    $('.selectImages div').on('click', function () {
+        $(this).toggleClass('active');
+        if (!$(this).hasClass('active')) {
+            $('.selectedImages div[name="'+ $(this).attr('name') +'"]').remove();
+            return;
+        }
+        var me = $(this).clone();
+        $('.selectedImages').append(me);
+
+    });
+
+
 }

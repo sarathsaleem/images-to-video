@@ -54,8 +54,23 @@ h1 {
     background-color: #A65800;
 }
 
-.createVideo {
+.createVideo,.backToGallery {
   position: absolute;
   top: 20px;
   left: 38px;
+}
+
+#pageEdit {
+    display: none;
+
+}
+
+.backToGallery {
+    display: none;
+}
+
+.selectImages .active .thumbnail {
+  border: 1px solid #00FF03;
+  box-shadow: 1px 2px 8px rgb(0, 255, 129);
+  opacity: 0.5;
 }
