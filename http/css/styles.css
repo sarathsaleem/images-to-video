@@ -74,3 +74,18 @@ h1 {
   box-shadow: 1px 2px 8px rgb(0, 255, 129);
   opacity: 0.5;
 }
+
+
+.selectedImages {
+
+    width: 800px;
+    margin: 20px 0;
+}
+.createMyVideo {
+  font-size: 14px;
+  padding: 6px 16px;
+}
+
+.createWrapper {
+    display: none;
+}

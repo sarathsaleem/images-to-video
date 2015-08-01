@@ -3,12 +3,17 @@ var fs = require('fs'),
 
 
 
-function createVideo() {
+function createVideo(params) {
+
+
+    var imagesPath = params.images,
+        albumName = params.name;
+
 
     var that = this;
 
     var inputImages = [  __dirname + '/http/images/cats/cat%03d.jpg'];
-    var output =  __dirname + "/http/videos/out.mp4";
+    var output =  __dirname + "/http/videos/" + albumName + ".mp4";
 
 
     // or more concisely

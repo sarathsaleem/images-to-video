@@ -1,6 +1,11 @@
 var express = require('express');
 var app = express();
 var upload = require('jquery-file-upload-middleware');
+var bodyParser = require('body-parser');
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 var createVideo = require('./createVideo');
 
@@ -32,10 +37,12 @@ app.use('/videos', function(req, res, next) {
 app.use('/createvideo', function(req, res, next) {
 
 
-    var paras = req.params;
-    console.log(paras)
+    var params = req.body;
 
-    createVideo();
+    createVideo(params);
+
+    res.send('createdVideo', { a: 'a'})
+
 });
 
 var server = app.listen(3000, function () {

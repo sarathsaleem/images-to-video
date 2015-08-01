@@ -22,8 +22,6 @@ $(document).ready(function () {
 
 
     /* File Upload */
-
-
     var url = 'api/upload/';
     $('#fileupload').fileupload({
         url: url,
@@ -43,11 +41,42 @@ $(document).ready(function () {
     }).prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
 
+
+
     intUI();
 
 
 });
 
+function rnd(min, max) {
+    return (Math.random() * (max - min + 1)) + min;
+}
+
+function createVideo() {
+
+    var images = $('.selectedImages img');
+
+    var imageId = [];
+
+    images.each(function (i, imgs) {
+        imageId.push($(imgs).attr('name-id'));
+    });
+
+    var createVideoUrl = '/createvideo';
+
+    function videoUpdated() {}
+
+    $.ajax({
+        url: createVideoUrl,
+        method: "POST",
+        data: { images: imageId   },
+        dataType: "application/json",
+        sucess : function () {
+            console.log("Data Loaded: " + data);
+        }
+    });
+
+}
 
 function intUI() {
 
@@ -78,7 +107,17 @@ function intUI() {
         var me = $(this).clone();
         $('.selectedImages').append(me);
 
+        if($('.selectedImages img').length) {
+            $(".createWrapper").show();
+        } else {
+            $(".createWrapper").hide();
+        }
+
     });
 
+
+    $('.createMyVideo').on('click', function () {
+         createVideo();
+    });
 
 }
