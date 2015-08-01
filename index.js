@@ -5,7 +5,7 @@ var http = require('http'),
 
 var child;
 
-fs.readFile('./index.html', function (err, html) {
+fs.readFile('./http/index.html', function (err, html) {
     if (err) {
         throw err;
     }
