@@ -13,8 +13,9 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "express": "4.13.1",
-    "jquery-file-upload-middleware": "0.1.7",
-    "body-parser": "~1.13.2"
+    "body-parser": "~1.13.2",
+    "glob": "^5.0.14",
+    "jquery-file-upload-middleware": "0.1.7"
   },
   "devDependencies": {
     "nodemon": "*"

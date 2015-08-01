@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 var createVideo = require('./createVideo');
+var glob = require('glob');
 
 app.use(express.static('http'));
 
@@ -25,6 +26,15 @@ app.use('/upload', function(req, res, next){
 
 // images
 app.get('/images', function(req, res, next) {
+    var images = {
+        'default' : []
+    };
+
+    glob("http/images/**/*.*", function (er, files) {
+        res.json(files.map(function(v){
+            return v.replace(/\/?http/, '');
+        }));
+    });
 
 });
 
@@ -50,8 +60,6 @@ var server = app.listen(3000, function () {
   var port = server.address().port;
 
   console.log('Example app listening at http://%s:%s', host, port);
-
-
 });
 
 
