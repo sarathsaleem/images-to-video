@@ -1,20 +1,22 @@
 {
-    "name": "Gitdashboard",
-    "version": "0.0.1",
-    "description": "",
-    "main": "index.js",
-    "repository": {
-        "type": "git"
-    },
-    "keywords": [
-        "video"
-    ],
-    "author": "Sarath saleem",
-    "license": "BSD-2-Clause",
-    "dependencies": {
-        "jquery-file-upload-middleware" : "*"
-    },
-    "devDependencies": {
-        "nodemon" : "*"
-    }
+  "name": "Gitdashboard",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "video"
+  ],
+  "author": "Sarath saleem",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "4.13.1",
+    "jquery-file-upload-middleware": "0.1.7",
+    "swig": "1.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "*"
+  }
 }
