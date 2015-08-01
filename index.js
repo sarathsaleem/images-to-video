@@ -1,7 +1,9 @@
 var express = require('express');
 var app = express();
+
 var upload = require('jquery-file-upload-middleware');
 var createVideo = require('./createVideo');
+var glob = require('glob');
 
 app.use(express.static('http'));
 
@@ -19,6 +21,15 @@ app.use('/upload', function(req, res, next){
 
 // images
 app.get('/images', function(req, res, next) {
+    var images = {
+        'default' : []
+    };
+
+    glob("http/images/**/*.*", function (er, files) {
+        res.json(files.map(function(v){
+            return v.replace(/\/?http/, '');
+        }));
+    });
 
 });
 
