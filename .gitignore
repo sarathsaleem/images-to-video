@@ -5,3 +5,7 @@ npm-debug.log
 
 # cli
 .bin
+
+# images, videos
+/http/videos
+/http/images

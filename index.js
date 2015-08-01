@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var upload = require('jquery-file-upload-middleware');
-
 var createVideo = require('./createVideo');
 
 app.use(express.static('http'));
@@ -43,8 +42,6 @@ var server = app.listen(3000, function () {
   var port = server.address().port;
 
   console.log('Example app listening at http://%s:%s', host, port);
-
-
 });
 
 
