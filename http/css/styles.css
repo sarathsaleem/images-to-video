@@ -89,3 +89,12 @@ h1 {
 .createWrapper {
     display: none;
 }
+
+.play {
+  width: 100px;
+  height: 100px;
+  background: url("play.png") center center no-repeat;
+  position: absolute;
+  top: 55px;
+  left: 76px;
+}

@@ -22,7 +22,7 @@ $(document).ready(function () {
 
 
     /* File Upload */
-    var url = 'api/upload/';
+    var url = '/upload/';
     $('#fileupload').fileupload({
         url: url,
         dataType: 'json',
@@ -30,6 +30,7 @@ $(document).ready(function () {
             $.each(data.result.files, function (index, file) {
                 $('<p/>').text(file.name).appendTo('#files');
             });
+            refreshImages();
         },
         progressall: function (e, data) {
             var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -54,29 +55,77 @@ function rnd(min, max) {
 
 function createVideo() {
 
-    var images = $('.selectedImages img');
+    var images = $('.selectedImages div');
 
     var imageId = [];
 
     images.each(function (i, imgs) {
-        imageId.push($(imgs).attr('name-id'));
+        imageId.push($(imgs).attr('name'));
     });
 
     var createVideoUrl = '/createvideo';
+
+
+    var videoName = $("input[name=videoName]").val();
+
+    if(!videoName) {
+        alert("Enter video name");
+        return;
+    }
 
     function videoUpdated() {}
 
     $.ajax({
         url: createVideoUrl,
         method: "POST",
-        data: { images: imageId   },
+        data: { images: imageId , name : videoName  },
         dataType: "application/json",
-        sucess : function () {
-            console.log("Data Loaded: " + data);
+        complete : function (data) {
+            alert("Video Created : ");
+           location.reload();
         }
     });
 
 }
+function refreshImages () {
+    function populateimages (data) {
+        var imgStr = "";
+        data.forEach(function (img) {
+             imgStr += '<div class="col-lg-2 col-sm-3 col-xs-4" name="'+ img +'"><a title="Image 1" href="#"><img class="thumbnail img-responsive" src="'+ img +'"></a></div>';
+        });
+        $('.imageGallery').html(imgStr);
+        $('.selectImages').html(imgStr);
+
+    }
+
+    $.get("/images/", function (data) {
+       populateimages(data);
+    });
+}
+
+function refreshVideos () {
+
+    function populateVideos (data) {
+        var vdsStr = "";
+        data.forEach(function (vds) {
+
+           if (vds.split('.')[1].match(/jpg|jped|png/)) {
+
+             var videoPath = vds.split('.')[0] + '.mp4';
+
+             vdsStr += '<div class="col-lg-2 col-sm-3 col-xs-4" name="" ><a title="Image 1" target="_blank" href="' + videoPath + '"><img class="thumbnail img-responsive" src="'+ vds +'"></a> <a title="Image 1" target="_blank" href="' + videoPath + '" class="play"></a></div>';
+           }
+
+        });
+        $('.videoGallery').html(vdsStr);
+    }
+
+    $.get("/videos/", function (data) {
+        populateVideos(data);
+    });
+
+}
+
 
 function intUI() {
 
@@ -98,7 +147,7 @@ function intUI() {
     });
 
 
-    $('.selectImages div').on('click', function () {
+    $('.selectImages').on('click', 'div', function () {
         $(this).toggleClass('active');
         if (!$(this).hasClass('active')) {
             $('.selectedImages div[name="'+ $(this).attr('name') +'"]').remove();
@@ -120,4 +169,7 @@ function intUI() {
          createVideo();
     });
 
+
+   refreshImages();
+   refreshVideos ();
 }

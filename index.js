@@ -41,17 +41,28 @@ app.get('/images', function(req, res, next) {
 // videos
 app.use('/videos', function(req, res, next) {
 
+    var videos = {
+        'default' : []
+    };
+
+    glob("http/videos/**/*.*", function (er, files) {
+        res.json(files.map(function(v){
+            return v.replace(/\/?http/, '');
+        }));
+    });
+
 });
 
 // createvideo
 app.use('/createvideo', function(req, res, next) {
 
-
     var params = req.body;
 
-    createVideo(params);
+    createVideo(params, function () {
+        res.send('createdVideo', {'sucess': true })
+    });
 
-    res.send('createdVideo', { a: 'a'})
+
 
 });
 
