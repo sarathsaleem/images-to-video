@@ -1,0 +1,17 @@
+{
+    "name": "Gitdashboard",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "repository": {
+        "type": "git"
+    },
+    "keywords": [
+    "video"
+  ],
+    "author": "Sarath saleem",
+    "license": "BSD-2-Clause",
+    "devDependencies": {
+        "nodemon" : "*"
+    }
+}
