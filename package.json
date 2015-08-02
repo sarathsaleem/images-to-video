@@ -1,5 +1,5 @@
 {
-  "name": "Gitdashboard",
+  "name": "ImagesToVideoNodejs",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "keywords": [
     "video"
   ],
-  "author": "Sarath saleem",
+  "author": "Sarath Saleem",
   "license": "BSD-2-Clause",
   "dependencies": {
     "express": "4.13.1",
