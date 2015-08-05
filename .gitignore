@@ -7,5 +7,5 @@ npm-debug.log
 .bin
 
 # images, videos
-/http/videos
-/http/images
+/http/videos/*
+/http/images/*
