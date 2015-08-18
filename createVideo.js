@@ -55,7 +55,7 @@ function createVideo(params, cb) {
     // or more concisely
     function puts(error, stdout, stderr) { console.log(error, stdout, stderr) };
 
-    var CMD = "ffmpeg -framerate 1/4 -i "+ inputImages +" -vcodec libx264 -t 30 -pix_fmt yuv420p " +  output;
+    var CMD = "ffmpeg -framerate 1/5 -i "+ inputImages +" -vcodec libx264 -t 30 -pix_fmt yuv420p " +  output;
 
     //console.log(CMD)
 
